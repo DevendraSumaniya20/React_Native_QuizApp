@@ -1,11 +1,4 @@
-import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import questions from '../../data/questions';
 import styles from './styles';
@@ -13,10 +6,14 @@ import {useNavigation} from '@react-navigation/native';
 import NavigationStringPath from '../../constants/NavigationStringPath';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useSelector} from 'react-redux';
+import {heightPercentageToDP} from 'react-native-responsive-screen';
+import {clearQuizData} from '../../store/reducerSlice/clearSlice';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
 
+  const isDarkMode = useSelector(state => state.theme.isDarkmode);
   const data = questions;
 
   const totalQuestions = data.length;
@@ -35,7 +32,7 @@ const QuizScreen = () => {
 
   let interval = null;
 
-  const progesPercentage = Math.floor((index / totalQuestions) * 100);
+  const progressPercentage = Math.floor((index / totalQuestions) * 100);
 
   useEffect(() => {
     if (selectedAnswerIndex !== null) {
@@ -74,14 +71,15 @@ const QuizScreen = () => {
   //   };
   // }, [counter]);
 
-  // useEffect(() => {
-  //   if (index + 1 > data.length) {
-  //     navigation.navigate(NavigationStringPath.RESULT, {
-  //       answers: answers,
-  //       points: points,
-  //     });
-  //   }
-  // }, [currentQuestion]);
+  useEffect(() => {
+    if (index + 1 > data.length) {
+      dispatch(clearQuizData());
+      navigation.navigate(NavigationStringPath.RESULT, {
+        answers: answers,
+        points: points,
+      });
+    }
+  }, [currentQuestion]);
 
   useEffect(() => {
     if (!interval) {
@@ -91,26 +89,60 @@ const QuizScreen = () => {
 
   const currentQuestion = data[index];
 
+  const darkmodeColor = isDarkMode ? '#fff' : '#000';
+  const darkborderColor = isDarkMode ? '#fff' : '#000';
+  const darkbackgroundColor = isDarkMode ? '#000' : '#fff';
+
   return (
-    <SafeAreaView>
-      <View style={styles.quizView}>
-        <Text>Quiz Challange</Text>
-        {/* <TouchableOpacity style={styles.counterView}>
-          <Text style={styles.counterText}> {counter}</Text>
-        </TouchableOpacity> */}
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: darkbackgroundColor}]}>
+      <View style={[styles.quizView, {backgroundColor: darkbackgroundColor}]}>
+        <Text style={[styles.quizChallangetext, {color: darkmodeColor}]}>
+          Quiz Challange
+        </Text>
+        <TouchableOpacity
+          style={[styles.counterView, {backgroundColor: darkbackgroundColor}]}>
+          <Text style={[styles.counterText, {color: darkmodeColor}]}>
+            {counter}
+          </Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.quizSecondView}>
-        <Text>Your Progress</Text>
-        <Text>
+      <View
+        style={[styles.quizSecondView, {backgroundColor: darkbackgroundColor}]}>
+        <Text style={[styles.yourProcessText, {color: darkmodeColor}]}>
+          Your Progress
+        </Text>
+        <Text style={[styles.questionanswertext, {color: darkmodeColor}]}>
           ({index}/{totalQuestions}) questions answered
         </Text>
       </View>
 
       {/* Progress Bar */}
 
-      <View style={styles.questionView}>
-        <Text style={styles.questionText}>{currentQuestion?.question}</Text>
-        <View style={styles.questionTopView}>
+      <View style={styles.progressBarView}>
+        <Text
+          style={{
+            backgroundColor: isDarkMode ? '#fff' : '#000',
+            borderRadius: 10,
+            position: 'absolute',
+            left: heightPercentageToDP(0),
+            height: heightPercentageToDP(1),
+            right: heightPercentageToDP(0),
+            width: `${progressPercentage}%`,
+            marginTop: heightPercentageToDP(2),
+          }}
+        />
+      </View>
+
+      <View
+        style={[
+          styles.questionView,
+          {backgroundColor: darkbackgroundColor, borderColor: darkborderColor},
+        ]}>
+        <Text style={[styles.questionText, {color: darkmodeColor}]}>
+          {currentQuestion?.question}
+        </Text>
+        <View style={[styles.questionTopView]}>
           {currentQuestion?.options?.map((item, index) => (
             <TouchableOpacity
               onPress={() => {
@@ -123,9 +155,9 @@ const QuizScreen = () => {
                   ? {
                       flexDirection: 'row',
                       alignItems: 'center',
-                      borderWidth: 0.5,
-                      borderColor: '#00FFFF',
-                      marginVertical: 10,
+                      borderWidth: 1,
+                      borderColor: darkborderColor,
+                      marginVertical: heightPercentageToDP(1),
                       backgroundColor: 'green',
                       borderRadius: 20,
                     }
@@ -134,18 +166,18 @@ const QuizScreen = () => {
                   ? {
                       flexDirection: 'row',
                       alignItems: 'center',
-                      borderWidth: 0.5,
-                      borderColor: '#00FFFF',
-                      marginVertical: 10,
+                      borderWidth: 1,
+                      borderColor: darkborderColor,
+                      marginVertical: heightPercentageToDP(1),
                       backgroundColor: 'red',
                       borderRadius: 20,
                     }
                   : {
                       flexDirection: 'row',
                       alignItems: 'center',
-                      borderWidth: 0.5,
-                      borderColor: '#00FFFF',
-                      marginVertical: 10,
+                      borderWidth: 1,
+                      borderColor: darkborderColor,
+                      marginVertical: heightPercentageToDP(1),
                       borderRadius: 20,
                     }
               }>
@@ -166,10 +198,18 @@ const QuizScreen = () => {
                   color="white"
                 />
               ) : (
-                <Text style={styles.optionsText}>{item.options}</Text>
+                <Text
+                  style={[
+                    styles.optionsText,
+                    {color: darkmodeColor, borderColor: darkborderColor},
+                  ]}>
+                  {item.options}
+                </Text>
               )}
 
-              <Text style={styles.answerText}>{item.answer}</Text>
+              <Text style={[styles.answerText, {color: darkmodeColor}]}>
+                {item.answer}
+              </Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -178,22 +218,18 @@ const QuizScreen = () => {
         style={
           answerStatus === null
             ? null
-            : {
-                marginTop: 45,
-                backgroundColor: '#452362',
-                padding: 10,
-                borderRadius: 10,
-                height: 120,
-              }
+            : [styles.answerLastView, {backgroundColor: darkbackgroundColor}]
         }>
         {answerStatus === null ? null : (
           <Text
             style={
               answerStatus === null
                 ? null
-                : {fontSize: 17, textAlign: 'center', fontWeight: 'bold'}
+                : [styles.answerLastStatusText, {color: darkmodeColor}]
             }>
-            {!!answerStatus ? 'correct answer' : 'Wrong answer'}
+            {!!answerStatus
+              ? 'Your Answer is correct ✅'
+              : 'Your Answer is incorrect ❌'}
           </Text>
         )}
 
@@ -206,28 +242,28 @@ const QuizScreen = () => {
                 answers: answers,
               })
             }
-            style={{
-              backgroundColor: 'green',
-              padding: 10,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginTop: 20,
-              borderRadius: 6,
-            }}>
-            <Text style={{color: 'white'}}>Done</Text>
+            style={[
+              styles.nextQuestionTouchble,
+              {
+                backgroundColor: darkbackgroundColor,
+                borderColor: darkborderColor,
+              },
+            ]}>
+            <Text style={[styles.doneText, {color: darkmodeColor}]}>Done</Text>
           </TouchableOpacity>
         ) : answerStatus === null ? null : (
           <TouchableOpacity
             onPress={() => setIndex(index + 1)}
-            style={{
-              backgroundColor: 'green',
-              padding: 10,
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginTop: 20,
-              borderRadius: 6,
-            }}>
-            <Text style={{color: 'white'}}>Next Question</Text>
+            style={[
+              styles.nextQuestionTouchble,
+              {
+                backgroundColor: darkbackgroundColor,
+                borderColor: darkborderColor,
+              },
+            ]}>
+            <Text style={[styles.nextQuestionText, {color: darkmodeColor}]}>
+              Next Question
+            </Text>
           </TouchableOpacity>
         )}
       </View>

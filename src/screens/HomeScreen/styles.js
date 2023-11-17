@@ -7,6 +7,19 @@ import {
 const styles = StyleSheet.create({
   container: {flex: 1},
   subcontainer: {margin: hp(0.4)},
+  darkModeButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: hp(1),
+    borderRadius: hp(1.5),
+    marginBottom: hp(3),
+    justifyContent: 'flex-end',
+  },
+
+  buttonText: {
+    fontSize: hp(2.5),
+    marginLeft: 10,
+  },
 
   image: {
     height: 375,
@@ -17,18 +30,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: hp(2),
+    borderWidth: 0.5,
+    marginHorizontal: wp(1),
+    borderRadius: 10,
   },
   quizText: {
-    fontSize: hp(3),
+    fontSize: hp(2.6),
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#000',
   },
   quizInnerView: {
-    padding: hp(2),
-    backgroundColor: '#f88888',
     borderRadius: 10,
-    marginTop: hp(2),
+    marginTop: hp(1.5),
     padding: Platform.OS === 'android' ? hp(2.9) : hp(1.5),
   },
   quizMainView: {
@@ -48,12 +61,13 @@ const styles = StyleSheet.create({
     fontSize: hp(2),
   },
   quizTouchableOpacity: {
-    backgroundColor: '#258888',
-    padding: hp(3),
-    borderRadius: 15,
+    padding: hp(2.4),
+    borderRadius: 10,
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: hp(2),
+    marginTop: hp(1.5),
+    borderWidth: 1.5,
+    backgroundColor: '#A9CFF5',
   },
   startQuizText: {
     fontSize: hp(2),
