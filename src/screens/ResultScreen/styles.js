@@ -27,15 +27,16 @@ const styles = StyleSheet.create({
 
   yourResultText: {
     fontSize: hp(5),
+    fontFamily: 'Poppins-Bold',
   },
 
   QuestionsAnsweredText: {
     fontSize: hp(2),
-    fontWeight: '600',
+    fontFamily: 'Poppins-Bold',
   },
   option5text: {
     fontSize: hp(2),
-    fontWeight: '600',
+    fontFamily: 'Poppins-Bold',
   },
 
   touchableOpacityView: {
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   },
   scoreText: {
     fontSize: hp(4),
-    fontWeight: '600',
+    fontFamily: 'Poppins-Bold',
     textAlign: 'center',
     marginTop: hp(2),
     alignSelf: 'center',
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   questionNumberText: {
     margin: hp(2),
     fontSize: hp(2),
-    fontWeight: '600',
+    fontFamily: 'Poppins-Bold',
   },
   continueTouchableView: {
     alignItems: 'center',
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   },
   continueText: {
     fontSize: hp(3),
-    fontWeight: '700',
+    fontFamily: 'Poppins-Bold',
     textAlign: 'center',
   },
 });

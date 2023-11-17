@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     padding: hp(1.2),
   },
   quizChallangetext: {
-    fontSize: hp(2.5),
-    fontWeight: '600',
+    fontSize: hp(3),
+    fontFamily: 'Poppins-Bold',
   },
 
   counterView: {
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   counterText: {
     textAlign: 'center',
     fontSize: hp(2.5),
-    fontWeight: '700',
+    fontFamily: 'Poppins-Bold',
   },
   quizSecondView: {
     flexDirection: 'row',
@@ -36,19 +36,19 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(2),
   },
   yourProcessText: {
-    fontSize: hp(1.7),
-    fontWeight: '400',
+    fontSize: hp(2),
+    fontFamily: 'Poppins-Bold',
   },
   questionanswertext: {
-    fontSize: hp(1.7),
-    fontWeight: '400',
+    fontSize: hp(1.8),
+    fontFamily: 'Poppins-Bold',
   },
 
   progressBarView: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: hp(1),
-    borderRadius: 10,
+    height: hp(1.5),
+    borderRadius: 50,
     justifyContent: 'center',
     marginTop: hp(1.5),
     borderWidth: 1,
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
     left: hp(0),
     height: hp(1),
     right: hp(0),
-
     marginTop: hp(2),
   },
 
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: hp(2.4),
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
   },
   questionTopView: {
     marginTop: hp(2),
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
     width: wp(10),
     borderRadius: 10,
     padding: hp(1.5),
+    fontFamily: 'Poppins-Medium',
   },
 
   optionsCheck: {
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
 
   answerText: {
     marginLeft: hp(1.4),
+    fontFamily: 'Poppins-Bold',
   },
   answerLastView: {
     marginTop: hp(10),
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
   answerLastStatusText: {
     fontSize: hp(2.5),
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
   },
   nextQuestionTouchble: {
     padding: hp(1),
@@ -123,14 +124,14 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(4),
   },
   nextQuestionText: {
-    fontWeight: '600',
     textAlign: 'center',
     fontSize: hp(3),
+    fontFamily: 'Poppins-Bold',
   },
   doneText: {
-    fontWeight: '600',
     textAlign: 'center',
     fontSize: hp(3),
+    fontFamily: 'Poppins-Bold',
   },
 });
 
