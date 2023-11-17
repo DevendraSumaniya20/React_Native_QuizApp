@@ -86,7 +86,7 @@ const ResultScreen = () => {
   const onShared = async () => {
     try {
       const result = await Share.share({
-        message: 'My score is this one ',
+        message: 'Try this app for check your knowledge ',
       });
 
       if (result.action === Share.sharedAction) {

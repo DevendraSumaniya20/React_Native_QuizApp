@@ -52,24 +52,24 @@ const QuizScreen = () => {
     setAnswerStatus(null);
   }, [index]);
 
-  // useEffect(() => {
-  //   const myInterval = () => {
-  //     if (counter >= 1) {
-  //       setCounter(state => state - 1);
-  //     }
-  //     if (counter === 0) {
-  //       setIndex(index + 1);
-  //       setCounter(15);
-  //     }
-  //   };
+  useEffect(() => {
+    const myInterval = () => {
+      if (counter >= 1) {
+        setCounter(state => state - 1);
+      }
+      if (counter === 0) {
+        setIndex(index + 1);
+        setCounter(15);
+      }
+    };
 
-  //   interval = setTimeout(myInterval, 1000);
+    interval = setTimeout(myInterval, 1000);
 
-  //   // clean up
-  //   return () => {
-  //     clearTimeout(interval);
-  //   };
-  // }, [counter]);
+    // clean up
+    return () => {
+      clearTimeout(interval);
+    };
+  }, [counter]);
 
   useEffect(() => {
     if (index + 1 > data.length) {
@@ -101,7 +101,13 @@ const QuizScreen = () => {
           Quiz Challange
         </Text>
         <TouchableOpacity
-          style={[styles.counterView, {backgroundColor: darkbackgroundColor}]}>
+          style={[
+            styles.counterView,
+            {
+              backgroundColor: darkbackgroundColor,
+              borderColor: darkborderColor,
+            },
+          ]}>
           <Text style={[styles.counterText, {color: darkmodeColor}]}>
             {counter}
           </Text>

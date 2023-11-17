@@ -19,10 +19,11 @@ const styles = StyleSheet.create({
   },
 
   counterView: {
-    padding: hp(1),
-    borderRadius: 50,
+    padding: hp(1.5),
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
   },
   counterText: {
     textAlign: 'center',
