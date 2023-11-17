@@ -23,8 +23,9 @@ const styles = StyleSheet.create({
 
   image: {
     height: hp(45),
-    width: '100%',
+    width: 'auto',
     borderRadius: 30,
+    marginHorizontal: hp(1),
   },
   quizView: {
     alignItems: 'center',
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   quizMainView: {
     flexDirection: 'row',
     alignItems: 'center',
-    margin: hp(0.8),
+    marginVertical: hp(0.9),
   },
   dotStyle: {
     marginRight: wp(1),
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
   },
   startQuizText: {
-    fontSize: hp(2.1),
+    fontSize: hp(2.5),
     fontFamily: 'Poppins-Bold',
   },
 });

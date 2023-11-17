@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: hp(1.2),
+    marginHorizontal: hp(1),
   },
   quizChallangetext: {
     fontSize: hp(3),
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginHorizontal: wp(2),
+    marginHorizontal: hp(2),
   },
   yourProcessText: {
     fontSize: hp(2),
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: hp(1.5),
     borderWidth: 1,
-    marginHorizontal: wp(3),
+    marginHorizontal: hp(2),
   },
 
   progressBarText: {
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     padding: hp(2),
     borderRadius: 10,
     borderWidth: 1,
-    marginHorizontal: wp(2),
+    marginHorizontal: wp(4),
   },
   questionText: {
     fontSize: hp(2.4),
