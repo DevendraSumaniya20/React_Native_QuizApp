@@ -85,10 +85,10 @@ const styles = StyleSheet.create({
   continueTouchableView: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: hp(3.5),
+    marginTop: hp(4),
     padding: hp(2.5),
     borderRadius: hp(2),
-    width: wp(50),
+    width: wp(90),
     alignSelf: 'center',
     borderWidth: 1,
   },

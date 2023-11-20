@@ -101,6 +101,17 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: hp(1.5),
   },
+  answerCorrectView: {
+    flexDirection: 'row',
+    textAlign: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'space-between',
+  },
+  correctAnswerText: {
+    fontSize: hp(2.5),
+    fontFamily: 'Poppins-Bold',
+  },
 
   answerText: {
     marginLeft: hp(1.4),
@@ -116,6 +127,8 @@ const styles = StyleSheet.create({
     fontSize: hp(2.5),
     textAlign: 'center',
     fontFamily: 'Poppins-Bold',
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   nextQuestionTouchble: {
     padding: hp(1),

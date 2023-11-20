@@ -8,6 +8,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {toggleTheme} from '../../store/reducerSlice/themeSlice';
 import {clearQuizData} from '../../store/reducerSlice/clearSlice';
 
+import * as Animatable from 'react-native-animatable';
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const HomeScreen = () => {
@@ -99,22 +101,27 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
-      <TouchableOpacity
-        style={[
-          styles.quizTouchableOpacity,
-          {
-            borderColor: darkborderColor,
-            backgroundColor: darkbackgroundColor,
-          },
-        ]}
-        onPress={() => {
-          dispatch(clearQuizData());
-          navigation.navigate(NavigationStringPath.QUIZ);
-        }}>
-        <Text style={[styles.startQuizText, {color: darkmodeColor}]}>
-          Start Quiz
-        </Text>
-      </TouchableOpacity>
+      <Animatable.View
+        animation="slideInLeft"
+        duration={1500}
+        style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <TouchableOpacity
+          style={[
+            styles.quizTouchableOpacity,
+            {
+              borderColor: darkborderColor,
+              backgroundColor: darkbackgroundColor,
+            },
+          ]}
+          onPress={() => {
+            dispatch(clearQuizData());
+            navigation.navigate(NavigationStringPath.QUIZ);
+          }}>
+          <Text style={[styles.startQuizText, {color: darkmodeColor}]}>
+            Start Quiz
+          </Text>
+        </TouchableOpacity>
+      </Animatable.View>
     </SafeAreaView>
   );
 };

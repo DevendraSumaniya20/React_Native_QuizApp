@@ -58,14 +58,16 @@ const styles = StyleSheet.create({
   quizTouchableOpacity: {
     padding: hp(2.2),
     borderRadius: 12,
-    marginLeft: 'auto',
-    marginRight: 'auto',
     marginTop: hp(1.5),
     borderWidth: 1.5,
+    width: hp(40),
+    alignItems: 'center',
+    alignSelf: 'center',
   },
   startQuizText: {
     fontSize: hp(2.5),
     fontFamily: 'Poppins-Bold',
+    textAlign: 'center',
   },
 });
 

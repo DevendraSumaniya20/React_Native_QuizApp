@@ -9,6 +9,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useSelector} from 'react-redux';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
 import {clearQuizData} from '../../store/reducerSlice/clearSlice';
+import * as Animatable from 'react-native-animatable';
 
 const QuizScreen = () => {
   const navigation = useNavigation();
@@ -29,6 +30,8 @@ const QuizScreen = () => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
 
   const [counter, setCounter] = useState(15);
+  // const [animationType, setAnimationType] = useState(null);
+  const [animationIndices, setAnimationIndices] = useState([]);
 
   let interval = null;
 
@@ -36,14 +39,20 @@ const QuizScreen = () => {
 
   useEffect(() => {
     if (selectedAnswerIndex !== null) {
+      let updatedAnimationIndices = [...animationIndices];
+
       if (selectedAnswerIndex === currentQuestion?.correctAnswerIndex) {
         setPoints(points => points + 10);
         setAnswerStatus(true);
+
         answers.push({question: index + 1, answer: true});
+        updatedAnimationIndices.push(selectedAnswerIndex);
       } else {
         setAnswerStatus(false);
         answers.push({question: index + 1, answer: false});
+        updatedAnimationIndices.push(selectedAnswerIndex);
       }
+      setAnimationIndices(updatedAnimationIndices);
     }
   }, [selectedAnswerIndex]);
 
@@ -125,7 +134,11 @@ const QuizScreen = () => {
 
       {/* Progress Bar */}
 
-      <View style={styles.progressBarView}>
+      <View
+        style={[
+          styles.progressBarView,
+          {backgroundColor: darkbackgroundColor, borderColor: darkborderColor},
+        ]}>
         <Text
           style={{
             backgroundColor: isDarkMode ? '#fff' : '#000',
@@ -149,74 +162,91 @@ const QuizScreen = () => {
           {currentQuestion?.question}
         </Text>
         <View style={[styles.questionTopView]}>
-          {currentQuestion?.options?.map((item, index) => (
-            <TouchableOpacity
-              onPress={() => {
-                selectedAnswerIndex == null && setSelectedAnswerIndex(index);
-              }}
-              key={index}
-              style={
-                selectedAnswerIndex === index &&
-                index === currentQuestion.correctAnswerIndex
-                  ? {
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      borderWidth: 1,
-                      borderColor: darkborderColor,
-                      marginVertical: heightPercentageToDP(1),
-                      backgroundColor: 'green',
-                      borderRadius: 20,
-                    }
-                  : selectedAnswerIndex !== null &&
-                    selectedAnswerIndex === index
-                  ? {
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      borderWidth: 1,
-                      borderColor: darkborderColor,
-                      marginVertical: heightPercentageToDP(1),
-                      backgroundColor: 'red',
-                      borderRadius: 20,
-                    }
-                  : {
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      borderWidth: 1,
-                      borderColor: darkborderColor,
-                      marginVertical: heightPercentageToDP(1),
-                      borderRadius: 20,
-                    }
-              }>
-              {selectedAnswerIndex === index &&
-              index === currentQuestion?.correctAnswerIndex ? (
-                <AntDesign
-                  style={styles.optionsCheck}
-                  name="check"
-                  size={20}
-                  color="white"
-                />
-              ) : selectedAnswerIndex != null &&
-                selectedAnswerIndex === index ? (
-                <AntDesign
-                  style={styles.optionsClose}
-                  name="close"
-                  size={20}
-                  color="white"
-                />
-              ) : (
-                <Text
-                  style={[
-                    styles.optionsText,
-                    {color: darkmodeColor, borderColor: darkborderColor},
-                  ]}>
-                  {item.options}
-                </Text>
-              )}
+          {currentQuestion?.options?.map((item, optionIndex) => (
+            <Animatable.View
+              key={optionIndex}
+              animation={
+                selectedAnswerIndex === optionIndex
+                  ? currentQuestion.correctAnswerIndex === optionIndex
+                    ? 'zoomIn'
+                    : 'shake'
+                  : null
+              }
+              onAnimationEnd={() => {
+                const updatedAnimationIndices = animationIndices.filter(
+                  i => i !== optionIndex,
+                );
+                setAnimationIndices(updatedAnimationIndices);
+              }}>
+              <TouchableOpacity
+                onPress={() => {
+                  selectedAnswerIndex == null &&
+                    setSelectedAnswerIndex(optionIndex);
+                }}
+                key={optionIndex}
+                style={
+                  selectedAnswerIndex === optionIndex &&
+                  optionIndex === currentQuestion.correctAnswerIndex
+                    ? {
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        borderWidth: 1,
+                        borderColor: darkborderColor,
+                        marginVertical: heightPercentageToDP(1),
+                        backgroundColor: 'green',
+                        borderRadius: 20,
+                      }
+                    : selectedAnswerIndex !== null &&
+                      selectedAnswerIndex === optionIndex
+                    ? {
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        borderWidth: 1,
+                        borderColor: darkborderColor,
+                        marginVertical: heightPercentageToDP(1),
+                        backgroundColor: 'red',
+                        borderRadius: 20,
+                      }
+                    : {
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        borderWidth: 1,
+                        borderColor: darkborderColor,
+                        marginVertical: heightPercentageToDP(1),
+                        borderRadius: 20,
+                      }
+                }>
+                {selectedAnswerIndex === optionIndex &&
+                optionIndex === currentQuestion?.correctAnswerIndex ? (
+                  <AntDesign
+                    style={styles.optionsCheck}
+                    name="check"
+                    size={20}
+                    color="white"
+                  />
+                ) : selectedAnswerIndex != null &&
+                  selectedAnswerIndex === optionIndex ? (
+                  <AntDesign
+                    style={styles.optionsClose}
+                    name="close"
+                    size={20}
+                    color="white"
+                  />
+                ) : (
+                  <Text
+                    style={[
+                      styles.optionsText,
+                      {color: darkmodeColor, borderColor: darkborderColor},
+                    ]}>
+                    {item.options}
+                  </Text>
+                )}
 
-              <Text style={[styles.answerText, {color: darkmodeColor}]}>
-                {item.answer}
-              </Text>
-            </TouchableOpacity>
+                <Text style={[styles.answerText, {color: darkmodeColor}]}>
+                  {item.answer}
+                </Text>
+              </TouchableOpacity>
+            </Animatable.View>
           ))}
         </View>
       </View>
@@ -233,18 +263,43 @@ const QuizScreen = () => {
                 ? null
                 : [styles.answerLastStatusText, {color: darkmodeColor}]
             }>
-            {!!answerStatus
-              ? 'Your Answer is correct ✅'
-              : 'Your Answer is incorrect ❌'}
+            {!!answerStatus ? (
+              <View>
+                <View style={styles.answerCorrectView}>
+                  <Text
+                    style={[styles.correctAnswerText, {color: darkmodeColor}]}>
+                    Your answer is correct
+                  </Text>
+                  <AntDesign
+                    style={styles.optionsCheck}
+                    name="check"
+                    size={35}
+                    color="green"
+                  />
+                </View>
+              </View>
+            ) : (
+              <View style={styles.answerCorrectView}>
+                <Text
+                  style={[styles.correctAnswerText, {color: darkmodeColor}]}>
+                  Your answer is incorrect
+                </Text>
+                <AntDesign
+                  style={styles.optionsClose}
+                  name="close"
+                  size={35}
+                  color="red"
+                />
+              </View>
+            )}
           </Text>
         )}
 
-        {index + 1 >= questions.length ? (
+        {index + 1 >= questions.length && answerStatus !== null ? (
           <TouchableOpacity
             onPress={() =>
               navigation.navigate(NavigationStringPath.RESULT, {
                 points: points,
-
                 answers: answers,
               })
             }

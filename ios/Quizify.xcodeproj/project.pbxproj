@@ -11,12 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3A8F5BD31FB24AD8B5D7A02B /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51AF8F9DA10E47B6B2F39A28 /* Poppins-Thin.ttf */; };
+		4EBD7527BC2D43D4A522F88B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80BEE72F2F4046EF86F26885 /* Poppins-Medium.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B98333662A4C54135B2DC430 /* libPods-Quizify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0E3D32ECE7A9DF2B1A0B80 /* libPods-Quizify.a */; };
 		DC7559C36EC6F394A37D0406 /* libPods-Quizify-QuizifyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0573BEF3FE791018FA5DCDBE /* libPods-Quizify-QuizifyTests.a */; };
 		DCFF517A3F304A0BB133FBF7 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51B76F43E0F54EAF8BB70E73 /* Poppins-Bold.ttf */; };
-		4EBD7527BC2D43D4A522F88B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80BEE72F2F4046EF86F26885 /* Poppins-Medium.ttf */; };
-		3A8F5BD31FB24AD8B5D7A02B /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51AF8F9DA10E47B6B2F39A28 /* Poppins-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,15 +41,15 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Quizify/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Quizify/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Quizify/main.m; sourceTree = "<group>"; };
+		51AF8F9DA10E47B6B2F39A28 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		51B76F43E0F54EAF8BB70E73 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		80BEE72F2F4046EF86F26885 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Quizify/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		886E05D897C1E8848765B560 /* Pods-Quizify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quizify.release.xcconfig"; path = "Target Support Files/Pods-Quizify/Pods-Quizify.release.xcconfig"; sourceTree = "<group>"; };
 		C8EB84DE93A6B59DEEBB4E65 /* Pods-Quizify-QuizifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quizify-QuizifyTests.release.xcconfig"; path = "Target Support Files/Pods-Quizify-QuizifyTests/Pods-Quizify-QuizifyTests.release.xcconfig"; sourceTree = "<group>"; };
 		DE0E3D32ECE7A9DF2B1A0B80 /* libPods-Quizify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Quizify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBDCF19697DCA2CCC4FF5E16 /* Pods-Quizify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quizify.debug.xcconfig"; path = "Target Support Files/Pods-Quizify/Pods-Quizify.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		51B76F43E0F54EAF8BB70E73 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; name = "Poppins-Bold.ttf"; path = "../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		80BEE72F2F4046EF86F26885 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		51AF8F9DA10E47B6B2F39A28 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; name = "Poppins-Thin.ttf"; path = "../src/assets/fonts/Poppins-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +87,17 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0714DB518A56415E97BE24B8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				51B76F43E0F54EAF8BB70E73 /* Poppins-Bold.ttf */,
+				80BEE72F2F4046EF86F26885 /* Poppins-Medium.ttf */,
+				51AF8F9DA10E47B6B2F39A28 /* Poppins-Thin.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* Quizify */ = {
@@ -154,17 +165,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		0714DB518A56415E97BE24B8 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				51B76F43E0F54EAF8BB70E73 /* Poppins-Bold.ttf */,
-				80BEE72F2F4046EF86F26885 /* Poppins-Medium.ttf */,
-				51AF8F9DA10E47B6B2F39A28 /* Poppins-Thin.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
