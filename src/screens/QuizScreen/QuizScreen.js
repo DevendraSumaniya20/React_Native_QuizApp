@@ -298,7 +298,7 @@ const QuizScreen = () => {
         )}
 
         {index + 1 >= questions.length && answerStatus !== null ? (
-          <Animatable.View animation="zoomIn" delay={500}>
+          <Animatable.View animation="zoomIn" delay={1500}>
             <AnimatedTouchableOpacity
               onPress={() =>
                 navigation.navigate(NavigationStringPath.RESULT, {
