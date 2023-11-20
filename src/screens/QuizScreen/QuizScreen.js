@@ -1,5 +1,5 @@
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import questions from '../../data/questions';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
@@ -30,10 +30,12 @@ const QuizScreen = () => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
 
   const [counter, setCounter] = useState(15);
-  // const [animationType, setAnimationType] = useState(null);
+
   const [animationIndices, setAnimationIndices] = useState([]);
 
   let interval = null;
+  const AnimatedTouchableOpacity =
+    Animatable.createAnimatableComponent(TouchableOpacity);
 
   const progressPercentage = Math.floor((index / totalQuestions) * 100);
 
@@ -296,36 +298,49 @@ const QuizScreen = () => {
         )}
 
         {index + 1 >= questions.length && answerStatus !== null ? (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(NavigationStringPath.RESULT, {
-                points: points,
-                answers: answers,
-              })
-            }
-            style={[
-              styles.nextQuestionTouchble,
-              {
-                backgroundColor: darkbackgroundColor,
-                borderColor: darkborderColor,
-              },
-            ]}>
-            <Text style={[styles.doneText, {color: darkmodeColor}]}>Done</Text>
-          </TouchableOpacity>
+          <Animatable.View animation="zoomIn" delay={500}>
+            <AnimatedTouchableOpacity
+              onPress={() =>
+                navigation.navigate(NavigationStringPath.RESULT, {
+                  points: points,
+                  answers: answers,
+                })
+              }
+              style={[
+                styles.nextQuestionTouchble,
+                {
+                  backgroundColor: darkbackgroundColor,
+                  borderColor: darkborderColor,
+                },
+              ]}>
+              <Text style={[styles.doneText, {color: darkmodeColor}]}>
+                Done
+              </Text>
+            </AnimatedTouchableOpacity>
+          </Animatable.View>
         ) : answerStatus === null ? null : (
-          <TouchableOpacity
-            onPress={() => setIndex(index + 1)}
-            style={[
-              styles.nextQuestionTouchble,
-              {
-                backgroundColor: darkbackgroundColor,
-                borderColor: darkborderColor,
-              },
-            ]}>
-            <Text style={[styles.nextQuestionText, {color: darkmodeColor}]}>
-              Next Question
-            </Text>
-          </TouchableOpacity>
+          <Animatable.View animation="zoomIn" delay={500}>
+            <AnimatedTouchableOpacity
+              onPress={() => {
+                setIndex(index + 1);
+
+                this.zoomInRef && this.zoomInRef.zoomIn();
+              }}
+              style={[
+                styles.nextQuestionTouchble,
+                {
+                  backgroundColor: darkbackgroundColor,
+                  borderColor: darkborderColor,
+                },
+              ]}
+              ref={ref => {
+                this.zoomInRef = ref;
+              }}>
+              <Text style={[styles.nextQuestionText, {color: darkmodeColor}]}>
+                Next Question
+              </Text>
+            </AnimatedTouchableOpacity>
+          </Animatable.View>
         )}
       </View>
     </SafeAreaView>
